@@ -1,11 +1,10 @@
-以下のような `README.md` にしておくとよいです。
-
 ***
 
 # 履歴書マスキングCLI
 
 PDF / Word（.docx）の履歴書からテキストを抽出し、ローカルLLM  
-`tokyotech-llm/Gemma-2-Llama-Swallow-9b-it-v0.1` を使って個人情報を `[[MASK]]` に置き換えた `.txt` を出力するCLIツールです。[1]
+`tokyotech-llm/Gemma-2-Llama-Swallow-9b-it-v0.1` を使って個人情報を `[[MASK]]` に置き換えた `.txt` を出力するCLIツールです。
+仕様モデルについてはTHIRD_PARTY_LICENSES.mdを参照してください。
 
 ## 前提環境
 
@@ -66,13 +65,13 @@ pip install -r requirements.txt
 > 補足:  
 > 「Defaulting to user installation because normal site-packages is not writeable」と表示される場合、  
 > - グローバル環境に書き込み権限がないため、ユーザー領域にインストールされています。  
-> - 仮想環境を使う場合は、上記の venv を有効化した上で再度 `pip install -r requirements.txt` を実行してください。[5][6]
+> - 仮想環境を使う場合は、上記の venv を有効化した上で再度 `pip install -r requirements.txt` を実行してください。
 
 ## モデルのダウンロードについて
 
-`tokyotech-llm/Gemma-2-Llama-Swallow-9b-it-v0.1` は Hugging Face から取得します。[1]
+`tokyotech-llm/Gemma-2-Llama-Swallow-9b-it-v0.1` は Hugging Face から取得します。
 
-初回実行時に自動でダウンロードされますが、事前に `huggingface-cli login` などで認証を通しておく必要がある場合があります。[7]
+初回実行時に自動でダウンロードされますが、事前に `huggingface-cli login` などで認証を通しておく必要がある場合があります。
 
 ```bash
 pip install "huggingface_hub[cli]"
@@ -92,15 +91,15 @@ python mask_resume_llm.py
 
 - ルート直下の `*.pdf` / `*.docx` を自動で検出  
 - `output/` ディレクトリを作成  
-- 各ファイルに対し、`output/元ファイル名.pdf.txt` / `output/元ファイル名.docx.txt` を出力します。[8][9]
+- 各ファイルに対し、`output/元ファイル名.pdf.txt` / `output/元ファイル名.docx.txt` を出力します。
 
 ## トラブルシューティング
 
 - `Defaulting to user installation ...` が出る  
   - 管理者権限のないグローバル環境にインストールしようとしているメッセージです。  
-  - 仮想環境を作成し、有効化した状態で `pip install -r requirements.txt` を実行してください。[6][5]
+  - 仮想環境を作成し、有効化した状態で `pip install -r requirements.txt` を実行してください。
 
 - モデルロードでメモリ不足になる  
-  - GPUメモリが少ない場合は CPU 実行に切り替えるか、量子化版モデル・より小さいモデルへの変更を検討してください。[7]
+  - GPUメモリが少ない場合は CPU 実行に切り替えるか、量子化版モデル・より小さいモデルへの変更を検討してください。
 
 ---
