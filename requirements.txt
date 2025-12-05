@@ -1,0 +1,6 @@
+torch          # GPU環境なら cuda 対応版を別途インストール推奨
+transformers
+accelerate
+
+pdfminer.six
+python-docx
