@@ -45,6 +45,13 @@ GPU / CUDA の有無によってコマンドが変わるため、公式サイト
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 
+例(GPU版):
+
+```bash
+nvidia-smi #CUDA Versionを確認
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu_version  #cu_versionはnvidia-smiで表示されたもの
+```
+
 ### 2. その他ライブラリを requirements.txt からインストール
 
 このリポジトリのルートにある `requirements.txt` には、以下のようなパッケージが含まれています。[3][4]
