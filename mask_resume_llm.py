@@ -6,6 +6,7 @@ import docx  # python-docx
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
+from tqdm import tqdm
 
 
 MODEL_NAME = "tokyotech-llm/Gemma-2-Llama-Swallow-9b-it-v0.1"
@@ -85,14 +86,11 @@ def main():
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     tokenizer, model = load_model(device=device)
-    #model.to(device)
 
     # ルート直下のPDFとDOCXを列挙
     targets = list(root.glob("*.pdf")) + list(root.glob("*.docx"))
 
-    for path in targets:
-        print(f"processing: {path.name}")
-
+    for path in tqdm(targets, desc="Processing files"):
         if path.suffix.lower() == ".pdf":
             text = extract_text_from_pdf(path)
         elif path.suffix.lower() == ".docx":
