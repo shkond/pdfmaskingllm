@@ -4,3 +4,4 @@ accelerate
 
 pdfminer.six
 python-docx
+tqdm
