@@ -85,7 +85,7 @@ def main():
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     tokenizer, model = load_model(device=device)
-    model.to(device)
+    #model.to(device)
 
     # ルート直下のPDFとDOCXを列挙
     targets = list(root.glob("*.pdf")) + list(root.glob("*.docx"))
